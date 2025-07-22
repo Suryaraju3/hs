@@ -7,7 +7,7 @@ const Homepage = () => {
   return (
     <div>
       <Header/>
-    </div>
+   </div>
   )
 }
 

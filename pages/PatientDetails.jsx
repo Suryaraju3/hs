@@ -31,17 +31,16 @@ const PatientDetails = () => {
 
 
 
+
 useEffect(()=>{
   fetchdata()
 },[])
  
 
   return (
-    <div>
+    <div className='bg-green-300'>
 
-      <form action="" onSubmit={submit}>
-        {/* <label htmlFor="">Pid</label>
-        <input type="text" className='border-2 rounded' value={form.Pid} onChange={(e)=>setForm({...form,Pid:e.target.value})} /> */}
+      <form action="" onSubmit={submit} className=''>
 
         <label htmlFor="">Name</label>
         <input type="text" className='border-2 rounded' value={form.Name} onChange={(e)=>setForm({...form,Name:e.target.value})} />
@@ -80,14 +79,14 @@ useEffect(()=>{
         <input type="text" className='border-2 rounded' value={form.Did} onChange={(e)=>setForm({...form,Did:e.target.value})}/>
 
         <div>
-          <button type='submit'>Save</button>
+          <button type='submit' >Save</button>
         </div>
       </form>
 
 
 
-      <table border='1'  cellPadding="3">
-  <thead>
+      <table  >
+  <thead className='bg-red-200'>
     <tr>
    
       <th>Name</th>
@@ -102,7 +101,7 @@ useEffect(()=>{
       <th>DoctorName</th>
       <th>Block</th>
       <th>Roomno</th>
-      
+
     </tr>
   </thead>
   <tbody>
@@ -117,7 +116,7 @@ useEffect(()=>{
         <td>{data.Address}</td>
         <td>{data.Date}</td>
         <td>{data.Issue}</td>
-         <td>{data.Did}</td>
+        <td>{data.Did}</td>
         <td>{data.DoctorName}</td>
         <td>{data.Block}</td>
         <td>{data.Roomno}</td>
@@ -127,8 +126,7 @@ useEffect(()=>{
     
   </tbody>
 </table>
-      
-    </div>
+</div>
   )
 }
 
