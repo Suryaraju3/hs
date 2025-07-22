@@ -75,4 +75,4 @@ Company: Workcohol
 
 ### Challenges
 
-* I Faced challenges in connecting Django backend with ReactJS frontend and handling JWT expiration. Learned how to implement automatic token refresh and protected routes using React.
+* I Faced challenges in connecting Django backend with ReactJS frontend and handling JWT expiration. 
