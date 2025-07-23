@@ -1,11 +1,12 @@
-
 import React, { useState, useEffect } from 'react'
 import Api from '@/Api';
+
 
 const PatientDetails = () => {
 
   const [form,setForm]=useState({Name:"",Age:"",Sex:"",Dateorbirth:"",Phonenumber:"",Address:"",Date:"",Issue:"",DoctorName:"",Block:"",Roomno:"",Did:""});
   const [pddata,setPdData]=useState([]);
+  
 
   const fetchdata = async ()=>{
     try{
@@ -29,6 +30,22 @@ const PatientDetails = () => {
     }
   }
 
+  
+
+  const deleted = async (Pid) => {
+    const token = localStorage.getItem('accessToken');
+    try {
+      await Api.delete(`/pdetails/${Pid}/`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setPdData(pddata.filter(data => data.Pid !== Pid));
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
 
 
 
@@ -41,7 +58,7 @@ useEffect(()=>{
     <div className='bg-green-300'>
 
       <form action="" onSubmit={submit} className=''>
-
+        <div className='flex justify-evenly'>
         <label htmlFor="">Name</label>
         <input type="text" className='border-2 rounded' value={form.Name} onChange={(e)=>setForm({...form,Name:e.target.value})} />
 
@@ -50,7 +67,7 @@ useEffect(()=>{
 
         <label htmlFor="">Sex</label>
         <input type="text" className='border-2 rounded' value={form.Sex} onChange={(e)=>setForm({...form,Sex:e.target.value})}/>
-
+        </div>
         <label htmlFor="">Dateorbirth</label>
         <input type="Date" className='border-2 rounded' value={form.Dateorbirth} onChange={(e)=>setForm({...form,Dateorbirth:e.target.value})} />
 
@@ -85,7 +102,7 @@ useEffect(()=>{
 
 
 
-      <table  >
+      <table cellSpacing="1" border="1" cellPadding="10" >
   <thead className='bg-red-200'>
     <tr>
    
@@ -120,6 +137,7 @@ useEffect(()=>{
         <td>{data.DoctorName}</td>
         <td>{data.Block}</td>
         <td>{data.Roomno}</td>
+        <td><button onClick={()=>deleted(data.Pid)}>Delete</button></td>
         
       </tr>
     ))}

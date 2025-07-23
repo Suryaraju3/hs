@@ -30,7 +30,28 @@ const Doctordetails = () => {
       }
     }
 
-   
+
+
+    const deleted = async (Did)=>{
+      const token = localStorage.getItem('accessToken');
+      try {
+        await Api.delete(`/doctors/${Did}/` , {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          
+        });
+        setPDetail(pdetail.filter(data => data.Did !== Did));
+      } catch (err) {
+        console.log(err);
+        alert("Delete failed")
+      }
+          }
+       
+
+
+
+    
 
   useEffect(()=>{
     fetchdoctordata();
@@ -84,6 +105,7 @@ const Doctordetails = () => {
               <td>{datas.specialist}</td>
               <td>{datas.Block}</td>
               <td>{datas.Roomno}</td>
+              <td><button onClick={()=>deleted(datas.Did)}>Delete</button></td>
               
             </tr>
 ))}

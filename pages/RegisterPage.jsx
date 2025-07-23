@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import Api from '@/Api'; 
 
 
 const RegisterPage = () => {
@@ -32,7 +33,7 @@ const RegisterPage = () => {
 
   return (
     <div>
-      <h2>Register</h2>
+      <h2 className='bg-red-800'>Register</h2>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       
       <form onSubmit={handleSubmit}>

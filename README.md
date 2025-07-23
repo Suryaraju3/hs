@@ -64,6 +64,7 @@ Company: Workcohol
 * POST-api/token/ login(JWT)
 * POST-Patientdetails Create patients
 * Get- Patientdetails List all patients
+* Delete- Patientdetails List 
 
 ### Security
 

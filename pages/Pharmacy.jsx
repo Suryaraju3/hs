@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Api from '@/Api';
+
+
 const Pharmacy = () => {
   
   const [form,setForm]=useState({DoctorName:"",Name:"",Age:"",Sex:"",Description:"",Qty:"",Total:"",Pid:""});
@@ -26,6 +28,23 @@ const Pharmacy = () => {
       console.log(err)
     }
   }
+
+  const deleted = async (pharmacyid) => {
+      const token = localStorage.getItem('accessToken');
+      try {
+        await Api.delete(`/pharmacy/${pharmacyid}/`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setPharData(phardata.filter(data => data.pharmacyid !== pharmacyid));
+      } catch (err) {
+        console.log(err);
+      }
+    }
+
+
+
 
     useEffect(()=>{
     fetchdata();
@@ -97,6 +116,7 @@ const Pharmacy = () => {
         <td>{data.Description}</td>
         <td>{data.Qty}</td>
         <td>{data.Total}</td>
+        <td><button onClick={()=>deleted(data.pharmacyid)}>Delete</button></td>
        
       </tr>
      ))}

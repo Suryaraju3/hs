@@ -6,6 +6,7 @@ import Api from '@/Api';
 import Link from 'next/link';
 
 const LoginPage = () => {
+  
   const [formData, setFormData] = useState({ username: '', password: '' });
   const [error, setError] = useState('');
   const router = useRouter();
@@ -41,10 +42,14 @@ const LoginPage = () => {
   };
 
   return (
-    <div  className='m-20'>
+     
+
+    <div  className=''>
+
+
       <h2>Login</h2>
 
-      {error && <p style={{ color: 'red' }}> {error}</p>}
+      {error && <p style={{ color: 'red' }} > {error}</p>}
 
       <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
 
@@ -55,9 +60,11 @@ const LoginPage = () => {
         <button type="submit"> Login  </button>
       </form>
 
-      <p  className='mt-15'>
-        Don't have an account? <Link href="/RegisterPage/">Register here</Link>
+      <p className="mt-8 text-blue-600 text-lg">
+        Don't have an account? <Link href="/RegisterPage">Register here</Link>
       </p>
+
+      
     </div>
   );
 };

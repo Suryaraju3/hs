@@ -12,7 +12,7 @@ const Header = () => {
       <Link href={'/Doctordetails/'} >DoctorDetails</Link>
       <Link href={'/Pharmacy/'}>Pharmacy</Link>
       <Link className='flex justify-end' href={'/RegisterPage/'}>Register</Link>
-     
+
       
     </div>
   )
